@@ -1,5 +1,158 @@
 ﻿<!DOCTYPE html>
 <html>
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Ticket</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/pretty-checkbox/2.2.1/pretty.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div>
+        <header class="topbar">
+            <div class="container kontainer-topbar">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3 kolom-topbar">
+                    <div class="div-logo">
+                        <a href="index-2.html">
+                            <img src="assets/img/Logo.png" class="logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="div-navbar">
+            <div class="container">
+                <ul class="nav nav-tabs nav-regular">
+                    <li class="active">
+                        <a href="index-2.html">
+                            <i class="fa fa-home ic-home"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pencarian-pp.html">Search </a>
+                    </li>
+                    <li>
+                        <a href="booking.html">Booking </a>
+                    </li>
+                    <li>
+                        <a href="pembayaran.html">
+                            Payment
+                            <span class="label label-default lab-new">New </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="konfirmasi.html">Confirm </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-tabs nav-kedua">
+                    @await Html.PartialAsync("_LoginPartial")
+                </ul>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <footer class="footer-web">
+        <div class="container footer-container">
+            <div class="div-about">
+                <h2 class="about-text">
+                    <strong>Flight Ticket </strong>Is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat
+                </h2>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 kolom-footer">
+                <div>
+                    <h3 class="footer-title">Company </h3>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#" class="link-foter">Careers </a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-foter">Blog </a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-foter">Mobile Apps</a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-foter">Mobile Site</a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-foter">Register Hotel</a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-foter">Credit </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 kolom-footer">
+                <div>
+                    <h3 class="footer-title">Help </h3>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#" class="link-foter">How to buy</a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-foter">FAQs </a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-foter">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-foter">Term of Service</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 kolom-footer">
+                <div>
+                    <h3 class="footer-title">Transactions </h3>
+                    <ul class="list-unstyled">
+                        <li>
+                        </li>
+                        <li>
+                            <a href="#" class="link-foter">FAQs </a>
+                        </li>
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="assets/js/style.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+
+
+</html>
+
+
+<!--  <!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -70,3 +223,5 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+    -->
