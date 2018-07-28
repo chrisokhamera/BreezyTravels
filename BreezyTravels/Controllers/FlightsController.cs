@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using BreezyTravels.Models.DTOs;
 using BreezyTravels.Models.FlightAPISearchRequestModels;
@@ -53,8 +54,15 @@ namespace BreezyTravels.Controllers
                 {
                     using (var client = HttpService.GetHttpClient())
                     {
-                        var result = await client.PostAsync("https://dev.allmyles.com/v2.0/flights", searchRequest);
-                        var responstring = result.Content.ReadAsStringAsync();
+                        string responseString = string.Empty;
+
+                        while (responseString == string.Empty)
+                        {
+                            Thread.Sleep(3000);
+                            var result = await client.PostAsync("https://dev.allmyles.com/v2.0/flights", searchRequest);
+                            responseString = await result.Content.ReadAsStringAsync();
+                        }
+                       
                     }
                 }
                 catch (Exception e)
