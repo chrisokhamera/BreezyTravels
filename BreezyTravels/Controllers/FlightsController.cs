@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using BreezyTravels.Models.DTOs;
+using BreezyTravels.Models.FlightAPIResponseModels;
 using BreezyTravels.Models.FlightAPISearchRequestModels;
 using BreezyTravels.Utility;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ namespace BreezyTravels.Controllers
                     FromLocation = model.From,
                     ToLocation = model.To,
                     DepartureDate = model.DepartureDate.ToShortDateString(),
-                    ReturnDate = (model.IsOneWay) ? model.ReturnDate.ToShortDateString() : string.Empty,
+
 
                     Persons = new List<Person>
                     {
@@ -47,14 +48,26 @@ namespace BreezyTravels.Controllers
                     }
                 };
 
+                try
+                {
+                    rm.ReturnDate = model.ReturnDate.Value.ToShortDateString();
+                }
+                catch (Exception)
+                {
+
+                    rm.ReturnDate = "";
+                }
+
                 string rmString = JsonConvert.SerializeObject(rm);
                 StringContent searchRequest = new StringContent(rmString, Encoding.UTF8, "application/json");
 
                 try
                 {
+
+                    string responseString = string.Empty;
+
                     using (var client = HttpService.GetHttpClient())
                     {
-                        string responseString = string.Empty;
 
                         while (responseString == string.Empty)
                         {
@@ -64,6 +77,8 @@ namespace BreezyTravels.Controllers
                         }
                        
                     }
+
+                    var availableFlights = JsonConvert.DeserializeObject<FlightSearchResponse>(responseString);
                 }
                 catch (Exception e)
                 {
