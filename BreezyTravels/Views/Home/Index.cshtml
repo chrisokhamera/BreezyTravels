@@ -1,4 +1,7 @@
-﻿@{
+﻿@using BreezyTravels.Models.DTOs
+@model FlightSearchDTO
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -29,23 +32,23 @@
 </div>
 <div class="container container-form" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100" data-aos-once="true">
     <div class="col-lg-10 col-lg-push-1 col-md-10 col-md-push-1 col-sm-12 col-xs-12 kolom-pencarian">
-        <form class="form-pencarian">
+        <form class="form-pencarian" method="post" action="/flights/search">
             <div class="row row-form-search">
-                <div class="col-lg-4 col-md-4 col-sm-4 kolom-form">
+                <div class="col-lg-6 col-md-6 col-sm-6 kolom-form">
                     <div class="div-judulstep">
                         <h4 class="judul-step">
                             <span>1 </span>Destinations
                         </h4>
                     </div>
                     <div class="div-txt">
-                        <input class="form-control input-teks" type="text" placeholder="Dari">
+                        <input class="form-control input-teks" type="text" placeholder="Dari" asp-for="From" name="From" id="From" > 
                         <a href="#" class="link-tukar">
                             <i class="fa fa-exchange"></i>
                         </a>
-                        <input class="form-control input-teks" type="text" placeholder="Ke">
+                        <input class="form-control input-teks" type="text" placeholder="Ke" name="To" id="To" asp-for="To">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 kolom-form">
+                <div class="col-lg-6 col-md-6 col-sm-6 kolom-form">
                     <div class="div-judulstep">
                         <h4 class="judul-step">
                             <span>2 </span>Date of Flight
@@ -68,36 +71,9 @@
                         <input class="form-control tgl-input" type="date" required="">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 kolom-form">
-                    <div class="div-judulstep">
-                        <h4 class="judul-step">
-                            <span>3 </span>Search Flight
-                        </h4>
-                    </div>
-                    <div class="form-flex">
-                        <p class="label-pnb">Adult </p>
-                        <select class="form-control pilih-penb">
-                            <option value="12" selected="">1</option>
-                            <option value="13">2</option>
-                            <option value="14">3</option>
-                        </select>
-                        <p class="label-pnb">Child </p>
-                        <select class="form-control pilih-penb">
-                            <option value="12" selected="">1</option>
-                            <option value="13">2</option>
-                            <option value="14">3</option>
-                        </select>
-                        <p class="label-pnb">Infant </p>
-                        <select class="form-control pilih-penb">
-                            <option value="12" selected="">1</option>
-                            <option value="13">2</option>
-                            <option value="14">3</option>
-                        </select>
-                    </div>
-                </div>
             </div>
             <div class="wrap-form-btn">
-                <button class="btn btn-default tombol-biru" type="button">Search Flight's</button>
+                <button class="btn btn-default tombol-biru" type="submit">Search Flight's</button>
             </div>
         </form>
     </div>

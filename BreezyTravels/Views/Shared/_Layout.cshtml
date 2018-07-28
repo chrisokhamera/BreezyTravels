@@ -7,23 +7,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Ticket</title>
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
     <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/pretty-checkbox/2.2.1/pretty.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="~/assets/css/styles.css">
+    <link href="~/jqueryui/jquery-ui.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -32,8 +24,8 @@
             <div class="container kontainer-topbar">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3 kolom-topbar">
                     <div class="div-logo">
-                        <a href="index-2.html">
-                            <img src="assets/img/Logo.png" class="logo">
+                        <a href="#">
+                            <img src="~/assets/img/Logo.png" class="logo">
                         </a>
                     </div>
                 </div>
@@ -43,7 +35,7 @@
             <div class="container">
                 <ul class="nav nav-tabs nav-regular">
                     <li class="active">
-                        <a href="index-2.html">
+                        <a href="#">
                             <i class="fa fa-home ic-home"></i>
                         </a>
                     </li>
@@ -132,17 +124,27 @@
                         <li>
                             <a href="#" class="link-foter">FAQs </a>
                         </li>
-                      
+
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
+    <script src="~/jqueryui/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Country_Name').autocomplete({
+                source: '/home/getairports'
+            });
+        });
+    </script>
+
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/bs-animation.js"></script>
     <script src="../../cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-    <script src="assets/js/style.js"></script>
+    <script src="~/assets/js/style.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 
@@ -156,7 +158,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BreezyTravels</title>
+    <title> - BreezyTravels</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -187,12 +189,10 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
     <div class="container body-content">
-        @RenderBody()
         <hr />
         <footer>
             <p>&copy; 2018 - BreezyTravels</p>
@@ -220,7 +220,6 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
-    @RenderSection("Scripts", required: false)
 </body>
 </html>
 
