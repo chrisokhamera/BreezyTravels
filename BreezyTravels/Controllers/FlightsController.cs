@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using BreezyTravels.Models.DTOs;
 using BreezyTravels.Models.FlightAPIResponseModels;
 using BreezyTravels.Models.FlightAPISearchRequestModels;
+using BreezyTravels.PageViewModels;
 using BreezyTravels.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -20,6 +21,9 @@ namespace BreezyTravels.Controllers
         [HttpPost]
         public async Task<IActionResult> Search(FlightSearchDTO model)
         {
+
+            FlightSearchResponse availableFlights = null;
+            SearchPageViewModel vm = null;
             if (ModelState.IsValid)
             {
 
@@ -78,7 +82,7 @@ namespace BreezyTravels.Controllers
                        
                     }
 
-                    var availableFlights = JsonConvert.DeserializeObject<FlightSearchResponse>(responseString);
+                    availableFlights = JsonConvert.DeserializeObject<FlightSearchResponse>(responseString);
                 }
                 catch (Exception e)
                 {
@@ -86,7 +90,14 @@ namespace BreezyTravels.Controllers
                     Debug.WriteLine(e.Message);
                 }
             }
-            return View();
+
+            if (availableFlights != null)
+            {
+                vm.FirstLeg = availableFlights.flightResultSet.Select(x => x.combinations.Select(a => a.firstLeg.flightSegments));
+                vm.ReturnLeg = availableFlights.flightResultSet.Select(x => x.combinations.Select(a => a.returnLeg.flightSegments));
+            }
+
+            return View(vm);
         }
     }
 }

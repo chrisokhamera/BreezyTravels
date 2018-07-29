@@ -7,6 +7,7 @@ namespace BreezyTravels.Models.FlightAPIResponseModels
 {
     public class Combination
     {
+        public ReturnLeg returnLeg { get; set; }
         public string validatingAirline { get; set; }
         public bool isOneWayCombinable { get; set; }
         public FirstLeg firstLeg { get; set; }

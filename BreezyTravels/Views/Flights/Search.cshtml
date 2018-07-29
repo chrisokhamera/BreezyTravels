@@ -1,0 +1,272 @@
+﻿@using BreezyTravels.Models.FlightAPIResponseModels;
+@model FlightSearchResponse
+
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+
+@if (Model == null)
+{
+    <div class="div-slider">
+        <div class="container slider-container">
+            <div class="carousel slide" data-ride="carousel" id="sliderHome">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active"></div>
+                    <div class="item"></div>
+                </div>
+                <div>
+                    <a class="left carousel-control" href="#sliderHome" role="button" data-slide="prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#sliderHome" role="button" data-slide="next">
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#sliderHome" data-slide-to="0" class="active"></li>
+                    <li data-target="#sliderHome" data-slide-to="1"></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="div-slider dipencarian">
+        <div class="container slider-container">
+            <div class="div-hasil">
+                <div class="div-inhasil">
+                    <h3 class="teks-hasil-maskapai">An Error Occured</h3>
+                    <p class="info-hasil-mask">No Flight Data Was Retrieved From the API</p>
+                </div>
+                <div class="collapse-inne">
+                    <a class="btn btn-default tbl-cariulang" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1"
+                       role="button" href="#collapse-1">GO BACK</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+else
+{
+
+    <div class="div-slider dipencarian">
+        <div class="container slider-container">
+            <div class="div-hasil">
+                <div class="div-inhasil">
+                    <h3 class="teks-hasil-maskapai">Jakarta (CGK) - Denpasar, Bali (ARD)</h3>
+                    <p class="info-hasil-mask">Sunday August 21, 2017 - Wednesday, August 22 2017 | 1 Adult</p>
+                </div>
+                <div class="collapse-inne">
+                    <a class="btn btn-default tbl-cariulang" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1"
+                       role="button" href="#collapse-1">Change Search</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container body-hasil">
+
+        <div class="row row-list-maskapai">
+            <div class="col-lg-6 col-md-6 col-xs-12 kolom-pp">
+                <div class="div-list-kiri">
+                    <p class="txt-filter">Departing Flights</p>
+                    <div class="div-item">
+                        <div class="div-slotpergi pp">
+                            <div class="div-maska">
+                                <div class="div-l-airline nopad">
+                                    <img src="assets/img/Layer%201.png" class="logo-airline img-kecil">
+                                </div>
+                                <h4 class="tt-keberangkatan judul-kecil">Yogyakarta (YGK) - Jakarta (CGK)</h4>
+                                <p class="tt-waktu txt-kecil">Wednesday, august 22 2017 </p>
+                                <p class="tt-airline">Nam Air IN-526/SJ-255 </p>
+                            </div>
+                            <div class="div-arive">
+                                <h4 class="tt-jam judul-kecil">10:45 </h4>
+                                <p class="tt-bandara bn-kecil">Yogyakarta (YGK)</p>
+                            </div>
+                            <div class="div-arive">
+                                <h4 class="tt-jam judul-kecil">11:40 </h4>
+                                <p class="tt-bandara">Direct </p>
+                            </div>
+                            <div class="div-durati">
+                                <h4 class="tt-jam judul-kecil">1h 24m</h4>
+                                <p class="tt-bandara">On Transit</p>
+                            </div>
+                            <div class="div-itm-fasilitas">
+                                <i class="fa fa-comment ic-fasilitas" data-toggle="tooltip" title="Free Chat"></i>
+                            </div>
+                            <div class="div-hrg mini">
+                                <h3 class="item-harga pp"> IDR, 1.450.000</h3>
+                                <a class="btn btn-default tbl-booking pp" role="button" href="#">CHOOSE </a>
+                            </div>
+                        </div>
+                        <a href="#detail-1g" class="link-kolapse" data-toggle="collapse">Flight Detail</a>
+                        <div id="detail-1g" class="div-kolap collapse">
+                            <div class="alur-berangkat-det pp">
+                                <div class="div-flx-lgo">
+                                    <div class="div-llogo">
+                                        <img src="assets/img/lion.png" class="logo-img">
+                                        <p class="txt-alur">Lion Air</p>
+                                        <p class="txt-alur">JT-568 </p>
+                                    </div>
+                                </div>
+                                <div class="line-det">
+                                    <i class="fa fa-circle line-rute"></i>
+                                    <i class="fa fa-circle line-rute-scn"></i>
+                                </div>
+                                <div class="div-rute-det">
+                                    <div class="alur-kiri-det">
+                                        <p class="txt-alur">10:45 </p>
+                                        <p class="txt-alur-waktu">Jum. 28 Ags</p>
+                                    </div>
+                                    <div class="alur-kanan">
+                                        <p class="txt-alur">
+                                            <strong>Keberangkatan</strong>: Bali / Denpasar (DPS)
+                                        </p>
+                                        <p class="txt-alur-panjang">Ngurah Rai Intl. Airport</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="label label-default label-lama" data-toggle="tooltip" title="Durasi 2 Jam 15 Menit">2j 15m</span>
+                                    <i class="fa fa-moon-o ic-fasilitas" data-toggle="tooltip" title="Perjalanan Malam"></i>
+                                    <i class="fa fa-briefcase ic-fasilitas" data-toggle="tooltip" title="Bagasi 20 kg"></i>
+                                </div>
+                                <div class="div-rute-det">
+                                    <div class="alur-kiri-det">
+                                        <p class="txt-alur">11:40 </p>
+                                        <p class="txt-alur-waktu">Jum. 28 Ags</p>
+                                    </div>
+                                    <div class="alur-kanan">
+                                        <p class="txt-alur">
+                                            <strong>Kedatangan:</strong> Jakarta (JKT)
+                                        </p>
+                                        <p class="txt-alur-panjang">Soekarno Hatta Intl. Airport</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="div-dtl-pmb pp">
+                                <div class="div-lft-pmb">
+                                    <h4 class="title-pmb">Termasuk Pajak dan Biaya</h4>
+                                    <p class="txt-pmb">Dewasa x 1: IDR. 1.450.000,-</p>
+                                    <p class="txt-pmb">PPN: IDR 45.000</p>
+                                    <p class="txt-pmb">Biaya Lain: IDR. 55.000</p>
+                                    <p class="txt-pmb">Convenience Fee: IDR 0</p>
+                                </div>
+                                <div class="div-lft-kr">
+                                    <h4 class="title-pmb">Total Harga Tiket Pesawat</h4>
+                                    <h3 class="tt-harga">IDR. 1.450.000</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 kolom-pp">
+                <div class="div-list-kanan">
+                    <p class="txt-filter">Return Flights</p>
+                </div>
+
+
+                @foreach (var item in Model.flightResultSet)
+                {
+                 
+                    <div class="div-item">
+                        <div class="div-slotpergi pp">
+                            <div class="div-maska">
+
+                                <h4 class="tt-keberangkatan judul-kecil"> - Jakarta (CGK)</h4>
+                                <p class="tt-waktu txt-kecil">Wednesday, august 22 2017 </p>
+                                <p class="tt-airline">Nam Air IN-526/SJ-255 </p>
+                            </div>
+                            <div class="div-arive">
+                                <h4 class="tt-jam judul-kecil">10:45 </h4>
+                                <p class="tt-bandara bn-kecil">Yogyakarta (YGK)</p>
+                            </div>
+                            <div class="div-arive">
+                                <h4 class="tt-jam judul-kecil">11:40 </h4>
+                                <p class="tt-bandara">Direct </p>
+                            </div>
+                            <div class="div-durati">
+                                <h4 class="tt-jam judul-kecil">1h 24m</h4>
+                                <p class="tt-bandara">On Transit</p>
+                            </div>
+
+                            <div class="div-hrg mini">
+                                <h3 class="item-harga pp"> IDR, 1.450.000</h3>
+                                <a class="btn btn-default tbl-booking pp" role="button" href="#">BOOK </a>
+                            </div>
+                        </div>
+                        <a href="#detail-1f" class="link-kolapse" data-toggle="collapse">Flight Detail</a>
+                        <div id="detail-1f" class="div-kolap collapse">
+                            <div class="alur-berangkat-det pp">
+                                <div class="div-flx-lgo">
+                                    <div class="div-llogo">
+                                        <p class="txt-alur">Lion Air</p>
+                                        <p class="txt-alur">JT-568 </p>
+                                    </div>
+                                </div>
+                                <div class="line-det">
+                                    <i class="fa fa-circle line-rute"></i>
+                                    <i class="fa fa-circle line-rute-scn"></i>
+                                </div>
+                                <div class="div-rute-det">
+                                    <div class="alur-kiri-det">
+                                        <p class="txt-alur">10:45 </p>
+                                        <p class="txt-alur-waktu">Jum. 28 Ags</p>
+                                    </div>
+                                    <div class="alur-kanan">
+                                        <p class="txt-alur">
+                                            <strong>Keberangkatan</strong>: Bali / Denpasar (DPS)
+                                        </p>
+                                        <p class="txt-alur-panjang">Ngurah Rai Intl. Airport</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="label label-default label-lama" data-toggle="tooltip" title="Durasi 2 Jam 15 Menit">2j 15m</span>
+                                    <i class="fa fa-moon-o ic-fasilitas" data-toggle="tooltip" title="Perjalanan Malam"></i>
+                                    <i class="fa fa-briefcase ic-fasilitas" data-toggle="tooltip" title="Bagasi 20 kg"></i>
+                                </div>
+                                <div class="div-rute-det">
+                                    <div class="alur-kiri-det">
+                                        <p class="txt-alur">11:40 </p>
+                                        <p class="txt-alur-waktu">Jum. 28 Ags</p>
+                                    </div>
+                                    <div class="alur-kanan">
+                                        <p class="txt-alur">
+                                            <strong>Kedatangan:</strong> Jakarta (JKT)
+                                        </p>
+                                        <p class="txt-alur-panjang">Soekarno Hatta Intl. Airport</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="div-dtl-pmb pp">
+                                <div class="div-lft-pmb">
+                                    <h4 class="title-pmb">Termasuk Pajak dan Biaya</h4>
+                                    <p class="txt-pmb">Dewasa x 1: IDR. 1.450.000,-</p>
+                                    <p class="txt-pmb">PPN: IDR 45.000</p>
+                                    <p class="txt-pmb">Biaya Lain: IDR. 55.000</p>
+                                    <p class="txt-pmb">Convenience Fee: IDR 0</p>
+                                </div>
+                                <div class="div-lft-kr">
+                                    <h4 class="title-pmb">Total Harga Tiket Pesawat</h4>
+                                    <h3 class="tt-harga">IDR. 1.450.000</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+
+}
+
