@@ -11,7 +11,7 @@ namespace BreezyTravels.Models.FlightAPIResponseModels
         public double tax { get; set; }
         public List<object> ticketDesignators { get; set; }
         public int quantity { get; set; }
-        public List<object> fare_in_preferred_currencies { get; set; }
+        public List<decimal> fare_in_preferred_currencies { get; set; }
         public string type { get; set; }
     }
 }

@@ -8,9 +8,11 @@ namespace BreezyTravels.PageViewModels
 {
     public class SearchPageViewModel
     {
-        public IEnumerable<IEnumerable<List<FlightSegment>>> FirstLeg { get; set; }
+        public List<Combination> Combinations { get; set; }
 
-        public IEnumerable<IEnumerable<List<FlightSegment>>> ReturnLeg { get; set; }
+        public List<FlightSegment> FirstLegs { get; set; }
+
+        public List<FlightSegment> ReturnLegs { get; set; }
 
     }
 }

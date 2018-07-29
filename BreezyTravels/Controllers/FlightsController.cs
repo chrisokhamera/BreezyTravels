@@ -91,10 +91,30 @@ namespace BreezyTravels.Controllers
                 }
             }
 
+
+
             if (availableFlights != null)
             {
-                vm.FirstLeg = availableFlights.flightResultSet.Select(x => x.combinations.Select(a => a.firstLeg.flightSegments));
-                vm.ReturnLeg = availableFlights.flightResultSet.Select(x => x.combinations.Select(a => a.returnLeg.flightSegments));
+                vm = new SearchPageViewModel();
+                vm.FirstLegs = new List<FlightSegment>();
+                vm.ReturnLegs = new List<FlightSegment>();
+
+                foreach (var resultSet in availableFlights.flightResultSet)
+                {
+                    foreach (var combination in resultSet.combinations)
+                    {
+                        foreach (var flighSegments in combination.firstLeg.flightSegments)
+                        {
+                            vm.FirstLegs.Add(flighSegments);
+                        }
+
+                        foreach (var flighSegments in combination.returnLeg.flightSegments)
+                        {
+                            vm.ReturnLegs.Add(flighSegments);
+                        }
+
+                    }
+                }
             }
 
             return View(vm);

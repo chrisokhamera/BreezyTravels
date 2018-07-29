@@ -1,5 +1,5 @@
-﻿@using BreezyTravels.Models.FlightAPIResponseModels;
-@model FlightSearchResponse
+﻿@using BreezyTravels.PageViewModels;
+@model SearchPageViewModel;
 
 
 @{
@@ -173,32 +173,30 @@ else
                 </div>
 
 
-                @foreach (var item in Model.flightResultSet)
+                @foreach (var flightSegment in Model.ReturnLegs)
                 {
-                 
                     <div class="div-item">
                         <div class="div-slotpergi pp">
                             <div class="div-maska">
 
-                                <h4 class="tt-keberangkatan judul-kecil"> - Jakarta (CGK)</h4>
-                                <p class="tt-waktu txt-kecil">Wednesday, august 22 2017 </p>
-                                <p class="tt-airline">Nam Air IN-526/SJ-255 </p>
+                                <h4 class="tt-keberangkatan judul-kecil">@flightSegment.departure.city.name (@flightSegment.departure.city.code) - @flightSegment.arrival.city.name (@flightSegment.arrival.city.code)</h4>
+                                <p class="tt-waktu txt-kecil">@flightSegment.departure.dateTime.ToLongDateString() </p>
+
+                                
+                                <p class="tt-airline">@flightSegment.operatingAirlineName</p>
                             </div>
                             <div class="div-arive">
-                                <h4 class="tt-jam judul-kecil">10:45 </h4>
-                                <p class="tt-bandara bn-kecil">Yogyakarta (YGK)</p>
+                                <h4 class="tt-jam judul-kecil">@flightSegment.departure.dateTime.ToShortTimeString()</h4>
+                                <p class="tt-bandara bn-kecil">Departure</p>
                             </div>
-                            <div class="div-arive">
-                                <h4 class="tt-jam judul-kecil">11:40 </h4>
-                                <p class="tt-bandara">Direct </p>
-                            </div>
+                           
                             <div class="div-durati">
-                                <h4 class="tt-jam judul-kecil">1h 24m</h4>
-                                <p class="tt-bandara">On Transit</p>
+                                <h4 class="tt-jam judul-kecil">@flightSegment.arrival.dateTime.ToShortTimeString()</h4>
+                                <p class="tt-bandara">Arrival</p>
                             </div>
 
                             <div class="div-hrg mini">
-                                <h3 class="item-harga pp"> IDR, 1.450.000</h3>
+                                <h3 class="item-harga pp">@flightSegment.availableSeats Seats Left</h3>
                                 <a class="btn btn-default tbl-booking pp" role="button" href="#">BOOK </a>
                             </div>
                         </div>

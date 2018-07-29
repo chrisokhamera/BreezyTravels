@@ -7,7 +7,7 @@ namespace BreezyTravels.Models.FlightAPIResponseModels
 {
     public class BaggageTier
     {
-        public List<object> max_weights { get; set; }
+        public List<int> max_weights { get; set; }
         public int tier { get; set; }
         public Total total { get; set; }
         public Price price { get; set; }
