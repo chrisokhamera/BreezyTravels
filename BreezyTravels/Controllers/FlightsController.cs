@@ -11,11 +11,13 @@ using BreezyTravels.Models.FlightAPIResponseModels;
 using BreezyTravels.Models.FlightAPISearchRequestModels;
 using BreezyTravels.PageViewModels;
 using BreezyTravels.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace BreezyTravels.Controllers
 {
+    [Authorize]
     public class FlightsController : Controller
     {
         [HttpPost]
