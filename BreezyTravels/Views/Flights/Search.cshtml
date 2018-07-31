@@ -1,0 +1,244 @@
+﻿@using BreezyTravels.PageViewModels;
+@model SearchPageViewModel;
+
+
+@{
+    ViewData["Title"] = "Search";
+    int i = 0;
+
+}
+
+
+
+@if (Model == null)
+{
+    <div class="div-slider">
+        <div class="container slider-container">
+            <div class="carousel slide" data-ride="carousel" id="sliderHome">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active"></div>
+                    <div class="item"></div>
+                </div>
+                <div>
+                    <a class="left carousel-control" href="#sliderHome" role="button" data-slide="prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#sliderHome" role="button" data-slide="next">
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#sliderHome" data-slide-to="0" class="active"></li>
+                    <li data-target="#sliderHome" data-slide-to="1"></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="div-slider dipencarian">
+        <div class="container slider-container">
+            <div class="div-hasil">
+                <div class="div-inhasil">
+                    <h3 class="teks-hasil-maskapai">An Error Occured</h3>
+                    <p class="info-hasil-mask">No Flight Data Was Retrieved From the API</p>
+                </div>
+                <div class="collapse-inne">
+                    <a class="btn btn-default tbl-cariulang" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1"
+                       role="button" href="#collapse-1">GO BACK</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+else
+{
+
+    <div class="div-slider dipencarian">
+        <div class="container slider-container">
+            <div class="div-hasil">
+                <div class="div-inhasil">
+                    <h3 class="teks-hasil-maskapai">Jakarta (CGK) - Denpasar, Bali (ARD)</h3>
+                    <p class="info-hasil-mask">Sunday August 21, 2017 - Wednesday, August 22 2017 | 1 Adult</p>
+                </div>
+                <div class="collapse-inne">
+                    <a class="btn btn-default tbl-cariulang" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1"
+                       role="button" href="#collapse-1">Change Search</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container body-hasil">
+
+        <div class="row row-list-maskapai">
+            <div class="col-lg-6 col-md-6 col-xs-12 kolom-pp">
+                <div class="div-list-kiri">
+                    <p class="txt-filter">Departing Flights</p>
+                    @foreach (var flightSegment in Model.FirstLegs)
+                    {
+                        string name = "g";
+                        i++;
+                        name = i + name;
+
+
+                        <div class="div-item">
+                            <div class="div-slotpergi pp">
+                                <div class="div-maska">
+
+                                    <h4 class="tt-keberangkatan judul-kecil">@flightSegment.departure.city.name (@flightSegment.departure.city.code) - @flightSegment.arrival.city.name (@flightSegment.arrival.city.code)</h4>
+                                    <p class="tt-waktu txt-kecil">@flightSegment.departure.dateTime.ToLongDateString() </p>
+
+
+                                    <p class="tt-airline">@flightSegment.operatingAirlineName</p>
+                                </div>
+                                <div class="div-arive">
+                                    <h4 class="tt-jam judul-kecil">@flightSegment.departure.dateTime.ToShortTimeString()</h4>
+                                    <p class="tt-bandara bn-kecil">Departure</p>
+                                </div>
+
+                                <div class="div-durati">
+                                    <h4 class="tt-jam judul-kecil">@flightSegment.arrival.dateTime.ToShortTimeString()</h4>
+                                    <p class="tt-bandara">Arrival</p>
+                                </div>
+
+                                <div class="div-hrg mini">
+                                    <h3 class="item-harga pp">@flightSegment.availableSeats Seats Left</h3>
+                                    <a class="btn btn-default tbl-booking pp" role="button" href="#">BOOK </a>
+                                </div>
+                            </div>
+                            <a href="#detail-@name" class="link-kolapse" data-toggle="collapse">Flight Detail</a>
+                            <div id="detail-@name" class="div-kolap collapse">
+                                <div class="alur-berangkat-det pp">
+                                    <div class="div-flx-lgo">
+                                        <div class="div-llogo">
+                                            <p class="txt-alur">@flightSegment.operatingAirlineName</p>
+                                            <p class="txt-alur">@flightSegment.flightNumber </p>
+                                        </div>
+                                    </div>
+                                    <div class="line-det">
+                                        <i class="fa fa-circle line-rute"></i>
+                                        <i class="fa fa-circle line-rute-scn"></i>
+                                    </div>
+                                    <div class="div-rute-det">
+                                        <div class="alur-kiri-det">
+                                            <p class="txt-alur">@flightSegment.departure.dateTime.ToShortTimeString() </p>
+                                            <p class="txt-alur-waktu">@flightSegment.departure.dateTime.ToLongDateString()</p>
+                                        </div>
+                                        <div class="alur-kanan">
+                                            <p class="txt-alur">
+                                                <strong>@flightSegment.departure.city.name</strong>:  (@flightSegment.departure.city.code)
+                                            </p>
+                                            <p class="txt-alur-panjang">@flightSegment.departure.airport.name</p>
+                                        </div>
+                                    </div>
+                                    <div class="div-rute-det">
+                                        <div class="alur-kiri-det">
+                                            <p class="txt-alur">@flightSegment.departure.dateTime.ToShortTimeString() </p>
+                                            <p class="txt-alur-waktu">@flightSegment.arrival.dateTime.ToLongDateString()</p>
+                                        </div>
+                                        <div class="alur-kanan">
+                                            <p class="txt-alur">
+                                                <strong>@flightSegment.arrival.city.name</strong>  (@flightSegment.arrival.city.code)
+                                            </p>
+                                            <p class="txt-alur-panjang">@flightSegment.arrival.airport.name</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 kolom-pp">
+                <div class="div-list-kanan">
+                    <p class="txt-filter">Return Flights</p>
+                </div>
+
+
+
+                @foreach (var flightSegment in Model.ReturnLegs)
+                {
+                    string name = "g";
+                    i++;
+                    name = i + name;
+                    
+
+                    <div class="div-item">
+                        <div class="div-slotpergi pp">
+                            <div class="div-maska">
+
+                                <h4 class="tt-keberangkatan judul-kecil">@flightSegment.departure.city.name (@flightSegment.departure.city.code) - @flightSegment.arrival.city.name (@flightSegment.arrival.city.code)</h4>
+                                <p class="tt-waktu txt-kecil">@flightSegment.departure.dateTime.ToLongDateString() </p>
+
+
+                                <p class="tt-airline">@flightSegment.operatingAirlineName</p>
+                            </div>
+                            <div class="div-arive">
+                                <h4 class="tt-jam judul-kecil">@flightSegment.departure.dateTime.ToShortTimeString()</h4>
+                                <p class="tt-bandara bn-kecil">Departure</p>
+                            </div>
+
+                            <div class="div-durati">
+                                <h4 class="tt-jam judul-kecil">@flightSegment.arrival.dateTime.ToShortTimeString()</h4>
+                                <p class="tt-bandara">Arrival</p>
+                            </div>
+
+                            <div class="div-hrg mini">
+                                <h3 class="item-harga pp">@flightSegment.availableSeats Seats Left</h3>
+                                <a class="btn btn-default tbl-booking pp" role="button" href="#">BOOK </a>
+                            </div>
+                        </div>
+                        <a href="#detail-@name" class="link-kolapse" data-toggle="collapse">Flight Detail</a>
+                        <div id="detail-@name" class="div-kolap collapse">
+                            <div class="alur-berangkat-det pp">
+                                <div class="div-flx-lgo">
+                                    <div class="div-llogo">
+                                        <p class="txt-alur">@flightSegment.operatingAirlineName</p>
+                                        <p class="txt-alur">@flightSegment.flightNumber </p>
+                                    </div>
+                                </div>
+                                <div class="line-det">
+                                    <i class="fa fa-circle line-rute"></i>
+                                    <i class="fa fa-circle line-rute-scn"></i>
+                                </div>
+                                <div class="div-rute-det">
+                                    <div class="alur-kiri-det">
+                                        <p class="txt-alur">@flightSegment.departure.dateTime.ToShortTimeString() </p>
+                                        <p class="txt-alur-waktu">@flightSegment.departure.dateTime.ToLongDateString()</p>
+                                    </div>
+                                    <div class="alur-kanan">
+                                        <p class="txt-alur">
+                                            <strong>@flightSegment.departure.city.name</strong>:  (@flightSegment.departure.city.code)
+                                        </p>
+                                        <p class="txt-alur-panjang">@flightSegment.departure.airport.name</p>
+                                    </div>
+                                </div>
+                                <div class="div-rute-det">
+                                    <div class="alur-kiri-det">
+                                        <p class="txt-alur">@flightSegment.departure.dateTime.ToShortTimeString() </p>
+                                        <p class="txt-alur-waktu">@flightSegment.arrival.dateTime.ToLongDateString()</p>
+                                    </div>
+                                    <div class="alur-kanan">
+                                        <p class="txt-alur">
+                                            <strong>@flightSegment.arrival.city.name</strong>  (@flightSegment.arrival.city.code)
+                                        </p>
+                                        <p class="txt-alur-panjang">@flightSegment.arrival.airport.name</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+
+}
+

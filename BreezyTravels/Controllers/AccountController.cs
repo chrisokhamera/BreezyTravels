@@ -42,11 +42,12 @@ namespace BreezyTravels.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(string returnUrl = null)
+        public async Task<IActionResult> Login(string returnUrl = "/")
         {
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
+            returnUrl = "/";
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -54,8 +55,9 @@ namespace BreezyTravels.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = "/")
         {
+            returnUrl = "/";
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -89,7 +91,7 @@ namespace BreezyTravels.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> LoginWith2fa(bool rememberMe, string returnUrl = null)
+        public async Task<IActionResult> LoginWith2fa(bool rememberMe, string returnUrl = "/")
         {
             // Ensure the user has gone through the username & password screen first
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
@@ -100,6 +102,7 @@ namespace BreezyTravels.Controllers
             }
 
             var model = new LoginWith2faViewModel { RememberMe = rememberMe };
+            returnUrl = "/";
             ViewData["ReturnUrl"] = returnUrl;
 
             return View(model);
@@ -108,8 +111,9 @@ namespace BreezyTravels.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LoginWith2fa(LoginWith2faViewModel model, bool rememberMe, string returnUrl = null)
+        public async Task<IActionResult> LoginWith2fa(LoginWith2faViewModel model, bool rememberMe, string returnUrl = "/")
         {
+            returnUrl = "/";
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -145,8 +149,9 @@ namespace BreezyTravels.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> LoginWithRecoveryCode(string returnUrl = null)
+        public async Task<IActionResult> LoginWithRecoveryCode(string returnUrl = "/")
         {
+            returnUrl = "/";
             // Ensure the user has gone through the username & password screen first
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
@@ -162,8 +167,9 @@ namespace BreezyTravels.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LoginWithRecoveryCode(LoginWithRecoveryCodeViewModel model, string returnUrl = null)
+        public async Task<IActionResult> LoginWithRecoveryCode(LoginWithRecoveryCodeViewModel model, string returnUrl = "/")
         {
+            returnUrl = "/";
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -206,8 +212,9 @@ namespace BreezyTravels.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Register(string returnUrl = null)
+        public IActionResult Register(string returnUrl = "/")
         {
+            returnUrl = "/";
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -215,8 +222,9 @@ namespace BreezyTravels.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = "/")
         {
+            returnUrl = "/";
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -253,8 +261,9 @@ namespace BreezyTravels.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public IActionResult ExternalLogin(string provider, string returnUrl = null)
+        public IActionResult ExternalLogin(string provider, string returnUrl = "/")
         {
+            returnUrl = "/";
             // Request a redirect to the external login provider.
             var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account", new { returnUrl });
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
@@ -263,8 +272,9 @@ namespace BreezyTravels.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
+        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = "/", string remoteError = null)
         {
+            returnUrl = "/";
             if (remoteError != null)
             {
                 ErrorMessage = $"Error from external provider: {remoteError}";
@@ -300,8 +310,9 @@ namespace BreezyTravels.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel model, string returnUrl = null)
+        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel model, string returnUrl = "/")
         {
+            returnUrl = "/";
             if (ModelState.IsValid)
             {
                 // Get the information about the user from the external login provider

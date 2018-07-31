@@ -10,6 +10,7 @@ namespace BreezyTravels.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -27,6 +28,18 @@ namespace BreezyTravels.Controllers
             ViewData["Message"] = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult GetAirports(string term)
+        {
+            var strings = new List<string>
+            {
+                "hello",
+                "hey",
+                "hi"
+            };
+
+            return new ObjectResult(strings);
         }
 
         public IActionResult Error()
